@@ -1,0 +1,52 @@
+{
+  "stage": "pretrain",
+  "seed": 42,
+  "effective_batch": 128,
+  "workers": 8,
+  "threads": 4,
+  "lr": 0.05,
+  "momentum": 0.9,
+  "weight_decay": 0.0001,
+  "label_smoothing": 0.1,
+  "warmup_epochs": 5,
+  "warmup_start_factor": 0.1,
+  "scheduler": {
+    "mode": "max",
+    "factor": 0.1,
+    "patience": 5,
+    "threshold": 0.001,
+    "threshold_mode": "abs",
+    "cooldown": 1,
+    "min_lr": 1e-05
+  },
+  "min_epochs": 40,
+  "max_epochs": 120,
+  "early_stop_patience": 15,
+  "minimum_lr_reductions": 1,
+  "epochs_after_lr_drop": 5,
+  "improvement_threshold": 0.001,
+  "input": {
+    "size": 160,
+    "random_resized_crop_scale": [
+      0.2,
+      1.0
+    ],
+    "hflip": 0.5,
+    "val_resize_short": 184,
+    "val_center_crop": 160,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "data_root": "data/imagenet100",
+  "classes_file": "configs/imagenet100_classes.json",
+  "exclusions_file": "data/splits/pretrain_exclusions.json",
+  "batch_size": 32
+}
